@@ -5,6 +5,8 @@ import {
   CustomersTableType,
   FormattedCustomersTable,
 } from '@/app/lib/definitions';
+import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { DeleteCustomer, UpdateCustomer } from './buttons';
 
 export default async function CustomersTable({
   customers,
@@ -13,10 +15,6 @@ export default async function CustomersTable({
 }) {
   return (
     <div className="w-full">
-      <h1 className={`${lusitana.className} mb-8 text-xl md:text-2xl`}>
-        Customers
-      </h1>
-      <Search placeholder="Search customers..." />
       <div className="mt-6 flow-root">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
@@ -29,21 +27,27 @@ export default async function CustomersTable({
                   >
                     <div className="flex items-center justify-between border-b pb-4">
                       <div>
-                        <div className="mb-2 flex items-center">
-                          <div className="flex items-center gap-3">
-                            <Image
-                              src={customer.image_url}
-                              className="rounded-full"
-                              alt={`${customer.name}'s profile picture`}
-                              width={28}
-                              height={28}
-                            />
-                            <p>{customer.name}</p>
+                        <div>
+                          <div className="mb-2 flex items-center">
+                            <div className="flex items-center gap-3">
+                              <Image
+                                src={customer.image_url}
+                                className="rounded-full"
+                                alt={`${customer.name}'s profile picture`}
+                                width={28}
+                                height={28}
+                              />
+                              <p>{customer.name}</p>
+                            </div>
                           </div>
+                          <p className="text-sm text-gray-500">
+                            {customer.email}
+                          </p>
                         </div>
-                        <p className="text-sm text-gray-500">
-                          {customer.email}
-                        </p>
+                      </div>
+                      <div className="flex justify-end gap-2">
+                        <UpdateCustomer id={customer.id} />
+                        <DeleteCustomer id = {customer.id} />
                       </div>
                     </div>
                     <div className="flex w-full items-center justify-between border-b py-5">
@@ -77,8 +81,11 @@ export default async function CustomersTable({
                     <th scope="col" className="px-3 py-5 font-medium">
                       Total Pending
                     </th>
-                    <th scope="col" className="px-4 py-5 font-medium">
+                    <th scope="col" className="px-3 py-5 font-medium">
                       Total Paid
+                    </th>
+                    <th scope="col" className="relative py-3 pl-6 pr-3">
+                      <span className="sr-only">Edit</span>
                     </th>
                   </tr>
                 </thead>
@@ -107,8 +114,14 @@ export default async function CustomersTable({
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
                         {customer.total_pending}
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm group-first-of-type:rounded-md group-last-of-type:rounded-md">
+                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
                         {customer.total_paid}
+                      </td>
+                      <td className="whitespace-nowrap bg-white py-3 pl-6 pr-3 group-first-of-type:rounded-md group-last-of-type:rounded-md">
+                        <div className="flex justify-end gap-3">
+                          < UpdateCustomer id={customer.id}/>
+                          < DeleteCustomer id={customer.id}/>
+                        </div>
                       </td>
                     </tr>
                   ))}

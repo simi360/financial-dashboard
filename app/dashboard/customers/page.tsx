@@ -3,12 +3,16 @@ import Search from "@/app/ui/search";
 import { lusitana } from "@/app/ui/fonts";
 import { CreateCustomer } from "@/app/ui/customers/buttons";
 import { CustomerTableSkeleton } from "@/app/ui/skeletons";
+import CustomersTable from "@/app/ui/customers/table";
+import { fetchFilteredCustomers } from "@/app/lib/data";
 
 export const metadata: Metadata = {
     title: 'Customers'
 }
 
-export default function Customers() {
+export default async function Customers() {
+    const query='';
+    const customers = await fetchFilteredCustomers(query);
 
     return (
         <div className="w-full">
@@ -20,6 +24,7 @@ export default function Customers() {
                 <CreateCustomer />
             </div>
             <CustomerTableSkeleton />
+            <CustomersTable customers={customers}/>
         </div>
     )
 }

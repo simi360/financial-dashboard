@@ -12,3 +12,28 @@ export function CreateCustomer(){
         </Link>
     );
 }
+
+export function UpdateCustomer({ id }: { id: string }) {
+    return (
+      <Link
+        href={`/dashboard/invoices/${id}/edit`}
+        className="rounded-md border p-2 hover:bg-gray-100"
+      >
+        <PencilIcon className="w-5" />
+      </Link>
+    );
+  }
+  
+  export function DeleteCustomer({ id }: { id: string }) {
+    // const deleteCustomerById = deleteCustomer.bind(null, id);
+    return (
+      <>
+        <form>
+          <button className="rounded-md border p-2 hover:bg-gray-100">
+            <span className="sr-only">Delete</span>
+            <TrashIcon className="w-5" />
+          </button>
+        </form>
+      </>
+    );
+  }

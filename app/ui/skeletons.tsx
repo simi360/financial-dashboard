@@ -231,6 +231,18 @@ export function CustomerTableRowSkeleton(){
       <td className="whitespace-nowrap px-3 py-3">
         <div className="h-6 w-32 rounded bg-gray-100"></div>
       </td>
+      {/* Total Invoices */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-[38px] w-[38px] rounded bg-gray-100"></div>
+      </td>
+      {/* Total Pending */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-[38px] w-[38px] rounded bg-gray-100"></div>
+      </td>
+      {/* Total Paid */}
+      <td className="whitespace-nowrap px-3 py-3">
+        <div className="h-[38px] w-[38px] rounded bg-gray-100"></div>
+      </td>
         {/* Actions */}
         <td className="whitespace-nowrap py-3 pl-6 pr-3">
           <div className="flex justify-end gap-3">
@@ -245,7 +257,7 @@ export function CustomerTableRowSkeleton(){
 export function CustomerMobileSkeleton() {
   return (
     <div className="mb-2 w-full rounded-md bg-white p-4">
-      <div className="flex items-center justify-between border-gray-100 pb-8">
+      <div className="flex items-center justify-between border-b border-gray-100 pb-8">
         <div className="flex items-center">
           <div className="mr-2 h-8 w-8 rounded-full bg-gray-100"></div>
           <div className="h-6 w-16 rounded bg-gray-100"></div>
@@ -254,6 +266,19 @@ export function CustomerMobileSkeleton() {
           <div className="h-10 w-10 rounded bg-gray-100"></div>
           <div className="h-10 w-10 rounded bg-gray-100"></div>
         </div>
+      </div>
+      <div className="flex w-full items-center justify-between border-b border-gray-100 py-4">
+        <div className="w-1/2">
+          <div className="h-6 w-16 rounded bg-gray-100"></div>
+          <div className="mt-2 h-6 w-24 rounded bg-gray-100"></div>
+        </div>
+        <div className="w-1/2">
+          <div className="h-6 w-16 rounded bg-gray-100"></div>
+          <div className="mt-2 h-6 w-24 rounded bg-gray-100"></div>
+        </div>
+      </div>
+      <div className="flex w-full items-center justify-between pt-3">
+        <div className="mt-2 h-6 w-24 rounded bg-gray-100"></div>
       </div>
     </div>
   );
@@ -280,6 +305,15 @@ export function CustomerTableSkeleton() {
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Email
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Total Invoices
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Total Pending
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Total Paid
                 </th>
                 <th
                   scope="col"
